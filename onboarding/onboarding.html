@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axiom - Setup</title>
+  <link rel="stylesheet" href="onboarding.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar-nav">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#6366f1">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <span>Axiom</span>
+      </div>
+      <nav>
+        <button class="nav-item active" data-step="profile">Profile</button>
+        <button class="nav-item" data-step="interests">Interests & Goals</button>
+        <button class="nav-item" data-step="settings">Settings</button>
+        <button class="nav-item" data-step="apikey">API Key</button>
+      </nav>
+    </div>
+
+    <div class="main">
+      <!-- Step 1: Profile -->
+      <div class="step active" id="step-profile">
+        <h1>Tell Axiom about yourself</h1>
+        <p class="subtitle">This helps Axiom personalize your experience. Everything stays private on your device.</p>
+
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="e.g., Alex">
+        </div>
+
+        <div class="form-group">
+          <label for="education">Education</label>
+          <input type="text" id="education" placeholder="e.g., Computer Science major, Junior year">
+        </div>
+
+        <div class="form-group">
+          <label for="occupation">Occupation / Role</label>
+          <input type="text" id="occupation" placeholder="e.g., Student, Software Engineer, Researcher">
+        </div>
+
+        <div class="form-group">
+          <label for="knowledge-level">Knowledge Level</label>
+          <select id="knowledge-level">
+            <option value="beginner">Beginner - Explain things simply</option>
+            <option value="intermediate" selected>Intermediate - Some technical detail is fine</option>
+            <option value="advanced">Advanced - Give me the full technical depth</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Anything else Axiom should know?</label>
+          <textarea id="notes" rows="3" placeholder="e.g., I'm preparing for GRE, learning machine learning, prefer concise explanations..."></textarea>
+        </div>
+
+        <button class="btn-primary" data-next="interests">Continue</button>
+      </div>
+
+      <!-- Step 2: Interests & Goals -->
+      <div class="step" id="step-interests">
+        <h1>What are you into?</h1>
+        <p class="subtitle">Add your interests and goals so Axiom can surface relevant content and opportunities.</p>
+
+        <div class="form-group">
+          <label>Interests</label>
+          <div class="tag-input-wrap">
+            <input type="text" id="interest-input" placeholder="Type an interest and press Enter">
+            <div class="tags" id="interest-tags"></div>
+          </div>
+          <div class="quick-tags">
+            <span class="quick-tag" data-target="interests">AI/ML</span>
+            <span class="quick-tag" data-target="interests">Web Development</span>
+            <span class="quick-tag" data-target="interests">Data Science</span>
+            <span class="quick-tag" data-target="interests">Finance</span>
+            <span class="quick-tag" data-target="interests">Design</span>
+            <span class="quick-tag" data-target="interests">Health</span>
+            <span class="quick-tag" data-target="interests">Science</span>
+            <span class="quick-tag" data-target="interests">Business</span>
+            <span class="quick-tag" data-target="interests">Music</span>
+            <span class="quick-tag" data-target="interests">Writing</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Goals</label>
+          <div class="tag-input-wrap">
+            <input type="text" id="goal-input" placeholder="Type a goal and press Enter">
+            <div class="tags" id="goal-tags"></div>
+          </div>
+          <div class="quick-tags">
+            <span class="quick-tag" data-target="goals">Get a job</span>
+            <span class="quick-tag" data-target="goals">Learn to code</span>
+            <span class="quick-tag" data-target="goals">Build a startup</span>
+            <span class="quick-tag" data-target="goals">Research</span>
+            <span class="quick-tag" data-target="goals">Ace exams</span>
+            <span class="quick-tag" data-target="goals">Stay informed</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-secondary" data-next="profile">Back</button>
+          <button class="btn-primary" data-next="settings">Continue</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Settings -->
+      <div class="step" id="step-settings">
+        <h1>Customize Axiom</h1>
+        <p class="subtitle">Choose which features to enable.</p>
+
+        <div class="toggle-group">
+          <label class="toggle">
+            <span>Auto-summarize pages</span>
+            <input type="checkbox" id="setting-auto-summarize">
+            <span class="toggle-slider"></span>
+          </label>
+          <label class="toggle">
+            <span>Confidence check (fact-checking)</span>
+            <input type="checkbox" id="setting-confidence-check" checked>
+            <span class="toggle-slider"></span>
+          </label>
+          <label class="toggle">
+            <span>Smart suggestions</span>
+            <input type="checkbox" id="setting-suggestions" checked>
+            <span class="toggle-slider"></span>
+          </label>
+          <label class="toggle">
+            <span>Reminders & notifications</span>
+            <input type="checkbox" id="setting-reminders" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-secondary" data-next="interests">Back</button>
+          <button class="btn-primary" data-next="apikey">Continue</button>
+        </div>
+      </div>
+
+      <!-- Step 4: API Key -->
+      <div class="step" id="step-apikey">
+        <h1>Connect AI</h1>
+        <p class="subtitle">Axiom uses Claude to power its AI features. Enter your Anthropic API key below. Your key stays private on your device.</p>
+
+        <div class="form-group">
+          <label for="api-key">Anthropic API Key</label>
+          <input type="password" id="api-key" placeholder="sk-ant-...">
+          <p class="hint">Get your key at <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a></p>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-secondary" data-next="settings">Back</button>
+          <button class="btn-primary" id="btn-finish">Finish Setup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="onboarding.js"></script>
+</body>
+</html>

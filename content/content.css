@@ -1,0 +1,449 @@
+/* Axiom Content Script Styles */
+
+/* Floating Action Button */
+#axiom-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  cursor: pointer;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#axiom-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(99, 102, 241, 0.5);
+}
+
+#axiom-fab svg {
+  width: 26px;
+  height: 26px;
+  fill: white;
+}
+
+/* Quick Actions Menu */
+#axiom-quick-menu {
+  position: fixed;
+  bottom: 86px;
+  right: 24px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  z-index: 2147483646;
+  overflow: hidden;
+  width: 220px;
+  display: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  animation: axiom-slide-up 0.2s ease-out;
+}
+
+@keyframes axiom-slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#axiom-quick-menu.axiom-visible {
+  display: block;
+}
+
+.axiom-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  font-size: 13px;
+  color: #1f2937;
+  transition: background 0.15s;
+  text-align: left;
+  font-family: inherit;
+}
+
+.axiom-menu-item:hover {
+  background: #f3f4f6;
+}
+
+.axiom-menu-item .axiom-menu-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* Confidence Badge */
+#axiom-confidence-badge {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 2147483645;
+  display: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#axiom-confidence-badge.axiom-visible {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s;
+  animation: axiom-slide-down 0.3s ease-out;
+}
+
+@keyframes axiom-slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#axiom-confidence-badge:hover {
+  transform: scale(1.04);
+}
+
+#axiom-confidence-badge.axiom-high {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+#axiom-confidence-badge.axiom-medium {
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+#axiom-confidence-badge.axiom-low {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+/* Overlay Panel (Summary, Confidence Details, Chat) */
+#axiom-overlay {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 2147483646;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#axiom-overlay.axiom-visible {
+  right: 0;
+}
+
+.axiom-overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+}
+
+.axiom-overlay-header h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.axiom-overlay-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.axiom-overlay-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.axiom-overlay-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #374151;
+}
+
+/* Summary Styles */
+.axiom-summary-section {
+  margin-bottom: 20px;
+}
+
+.axiom-summary-section h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6366f1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 8px 0;
+}
+
+.axiom-summary-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.axiom-summary-bullets li {
+  padding: 6px 0 6px 16px;
+  position: relative;
+}
+
+.axiom-summary-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6366f1;
+}
+
+.axiom-relevance-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.axiom-relevance-high {
+  background: #ecfdf5;
+  color: #065f46;
+}
+
+.axiom-relevance-medium {
+  background: #fffbeb;
+  color: #92400e;
+}
+
+.axiom-relevance-low {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Confidence Detail Styles */
+.axiom-claim-card {
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.axiom-claim-text {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #1f2937;
+}
+
+.axiom-claim-rating {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.axiom-rating-verified { background: #d1fae5; color: #065f46; }
+.axiom-rating-likely { background: #dbeafe; color: #1e40af; }
+.axiom-rating-uncertain { background: #fef3c7; color: #92400e; }
+.axiom-rating-misleading { background: #fee2e2; color: #991b1b; }
+.axiom-rating-false { background: #fecaca; color: #7f1d1d; }
+
+.axiom-claim-explanation {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Chat Styles */
+.axiom-chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.axiom-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 0;
+}
+
+.axiom-chat-message {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 85%;
+}
+
+.axiom-chat-message.axiom-user {
+  background: #6366f1;
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+.axiom-chat-message.axiom-assistant {
+  background: #f3f4f6;
+  color: #1f2937;
+  border-bottom-left-radius: 4px;
+}
+
+.axiom-chat-input-wrap {
+  display: flex;
+  gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.axiom-chat-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 13px;
+  outline: none;
+  font-family: inherit;
+  resize: none;
+}
+
+.axiom-chat-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+
+.axiom-chat-send {
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.axiom-chat-send:hover {
+  background: #4f46e5;
+}
+
+/* Suggestions */
+.axiom-suggestion-card {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.axiom-suggestion-card:hover {
+  border-color: #6366f1;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.12);
+}
+
+.axiom-suggestion-type {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6366f1;
+  margin-bottom: 4px;
+}
+
+.axiom-suggestion-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.axiom-suggestion-desc {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Loading Spinner */
+.axiom-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.axiom-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: axiom-spin 0.7s linear infinite;
+}
+
+@keyframes axiom-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Toast Notification */
+#axiom-toast {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  background: #1f2937;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  z-index: 2147483647;
+  display: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: axiom-slide-up 0.2s ease-out;
+}
+
+#axiom-toast.axiom-visible {
+  display: block;
+}
